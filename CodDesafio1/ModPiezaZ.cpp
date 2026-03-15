@@ -11,7 +11,8 @@ void rota1PiezaZ(){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
-    if((Tablero[(filaAux1 * ancho) + colAux1]== mascara1) && (Tablero[(filaAux2 * ancho) + colAux2] == mascara2)){
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
         // Ingresa 1s
         Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
         Tablero[(filaAux1 * ancho) + colAux2] |= mascara2;
@@ -32,7 +33,8 @@ void rota2PiezaZ(){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 2) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 3) % 8));
 
-    if((Tablero[(filaAux * ancho) + colAux1]== mascara1) && (Tablero[(filaAux2 * ancho) + colAux2] == mascara2)){
+    if(((Tablero[(filaAux * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
         // Ingresa 1s
         Tablero[(filaAux * ancho) + colAux1] |= mascara1;
         Tablero[(filaAux * ancho) + colAux2] |= mascara2;
@@ -48,3 +50,67 @@ void rota2PiezaZ(){
         Tablero[(filaAux * ancho) + colAux2] ^= mascara2;
     }
 }
+void bajarPiezaZOrigin(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza + 1;
+    int filaAux3 = ultFilaPieza + 1;
+    int colAux1 = priColPieza / 8;
+    int colAux2 = (priColPieza + 1) / 8;
+    int colAux3 = (priColPieza + 2) / 8;
+    unsigned char mascara1 = (0x80 >> (priColPieza % 8));
+    unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
+    unsigned char mascara3 = (0x80 >> ((priColPieza + 2) % 8));
+
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2) &&
+        ((Tablero[(filaAux3 * ancho) + colAux3] & mascara3) == mascara3)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        Tablero[(filaAux3 * ancho) + colAux3] |= mascara3;
+        // Ingresa 0s
+        filaAux1 = ultFilaPieza - 1;
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
+        Tablero[(filaAux1 * ancho) + colAux2] ^= mascara2;
+        filaAux1 = ultFilaPieza;
+        Tablero[(filaAux1 * ancho) + colAux3] ^= mascara3;
+        // Actualizacion de la variable a la fila de la pieza
+        ultFilaPieza += 1;
+    }
+}
+void bajarPiezaZRot1(){
+    int filaAux1 = ultFilaPieza + 1;
+    int filaAux2 = ultFilaPieza;
+    int colAux1 = priColPieza / 8;
+    int colAux2 = (priColPieza + 1) / 8;
+    unsigned char mascara1 = (0x80 >> (priColPieza % 8));
+    unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
+
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        // Ingresa 0s
+        filaAux1 = ultFilaPieza - 1;
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
+
+        filaAux2 = ultFilaPieza - 2;
+        Tablero[(filaAux2 * ancho) + colAux2] ^= mascara2;
+        // Actualizacion de la variable a la fila de la pieza
+        ultFilaPieza += 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,8 +1,8 @@
 #ifndef MODPIEZAZ_H
 #define MODPIEZAZ_H
-extern int priColPieza;
-extern int ultFilaPieza;
 
 void rota1PiezaZ();
 void rota2PiezaZ();
+void bajarPiezaZOrigin();
+void bajarPiezaZRot1();
 #endif // MODPIEZAZ_H

@@ -2,6 +2,7 @@
 
 #include "ModPiezaT.h"
 #include "ModTablero.h"
+#include "ModPiezaZ.h"
 
 using namespace std;
 

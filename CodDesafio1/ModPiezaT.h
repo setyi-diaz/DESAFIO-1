@@ -7,5 +7,6 @@ extern int ultFilaPieza;
 void rota1PiezaT();
 void rota2PiezaT();
 void rota3PiezaT();
+void rota4PiezaT();
 
 #endif // MODPIEZAT_H

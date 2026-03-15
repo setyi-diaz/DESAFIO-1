@@ -3,6 +3,8 @@
 
 extern int ancho;
 extern int alto;
+extern int priColPieza;
+extern int ultFilaPieza;
 extern char* Tablero;
 
 void crearTablero();

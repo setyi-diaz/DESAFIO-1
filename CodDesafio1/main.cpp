@@ -1,9 +1,14 @@
 #include <iostream>
 
+#include "ModPiezaT.h"
+#include "ModTablero.h"
+
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+
+    delete[] Tablero;  //investigar si se puede liberar desde la region static!!
+
     return 0;
 }

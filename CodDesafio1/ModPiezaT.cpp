@@ -106,7 +106,7 @@ void bajarPiezaTOrigin(){
         Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
         Tablero[(filaAux1 * ancho) + colAux2] ^= mascara2;
         Tablero[(filaAux1 * ancho) + colAux3] ^= mascara3;
-        // Actualizacion de la variable de refencia a la fila de la pieza
+        // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
     }
 }
@@ -129,7 +129,7 @@ void bajarPiezaTRot1(){
 
         filaAux2 = ultFilaPieza - 2;
         Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
-        // Actualizacion de la variable a la fila de la pieza
+        // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
     }
 }
@@ -158,7 +158,7 @@ void bajarPiezaTRot2(){
 
         filaAux = ultFilaPieza;
         Tablero[(filaAux * ancho) + colAux3] ^= mascara3;
-        // Actualizacion de la variable a la fila de la pieza
+        // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
     }
 }
@@ -181,28 +181,222 @@ void bajarPiezaTRot3(){
 
         filaAux2 = ultFilaPieza - 1;
         Tablero[(filaAux2 * ancho) + colAux2] ^= mascara2;
-        // Actualizacion de la variable a la fila de la pieza
+        // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
     }
 }
+void desplazarIzqTOrigin(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int colAux1 = priColPieza / 8;
+    int colAux2 = (priColPieza - 1) / 8;
+    unsigned char mascara1 = (0x80 >> (priColPieza % 8));
+    unsigned char mascara2 = (0x80 >> ((priColPieza - 1) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        // Ingresa 0s
+        colAux1 = (priColPieza + 1) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
 
+        colAux2 = (priColPieza + 2) / 8;
+        mascara2 = (0x80 >> ((priColPieza + 2) % 8));
+        Tablero[(filaAux2 * ancho) + colAux2] ^= mascara2;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza -= 1;
+    }
+}
+void desplazarIzqTRot1(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int filaAux3 = ultFilaPieza - 2;
+    int colAux1 = priColPieza / 8;
+    int colAux2 = (priColPieza - 1) / 8;
+    unsigned char mascara1 = (0x80 >> (priColPieza % 8));
+    unsigned char mascara2 = (0x80 >> ((priColPieza - 1) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2) &&
+        ((Tablero[(filaAux3 * ancho) + colAux1] & mascara1)== mascara1)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        Tablero[(filaAux3 * ancho) + colAux1] |= mascara1;
+        // Ingresa 0s
+        colAux1 = (priColPieza + 1) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux1] ^= mascara1;
+        Tablero[(filaAux3 * ancho) + colAux1] ^= mascara1;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza -= 1;
+    }
+}
+void desplazarIzqTRot2(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int colAux1 = (priColPieza - 1) / 8;
+    int colAux2 = priColPieza / 8;
+    unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
+    unsigned char mascara2 = (0x80 >> (priColPieza % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        // Ingresa 0s
+        colAux1 = (priColPieza + 2) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 2) % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
 
+        colAux2 = (priColPieza + 1) / 8;
+        mascara2 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux2 * ancho) + colAux2] ^= mascara2;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza -= 1;
+    }
+}
+void desplazarIzqTRot3(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int filaAux3 = ultFilaPieza - 2;
+    int colAux1 = (priColPieza - 1) / 8;
+    unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux1] & mascara1) == mascara1) &&
+        ((Tablero[(filaAux3 * ancho) + colAux1] & mascara1)== mascara1)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux3 * ancho) + colAux1] |= mascara1;
+        // Ingresa 0s
+        colAux1 = priColPieza / 8;
+        mascara1 = (0x80 >> (priColPieza % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
 
+        colAux1 = (priColPieza + 1) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux2 * ancho) + colAux1] ^= mascara1;
 
+        colAux1 = priColPieza / 8;
+        mascara1 = (0x80 >> (priColPieza % 8));
+        Tablero[(filaAux3 * ancho) + colAux1] ^= mascara1;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza -= 1;
+    }
+}
+void desplazarDerTOrigin(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int colAux1 = (priColPieza + 2) / 8;
+    int colAux2 = (priColPieza + 3) / 8;
+    unsigned char mascara1 = (0x80 >> ((priColPieza + 2) % 8));
+    unsigned char mascara2 = (0x80 >> ((priColPieza + 3) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        // Ingresa 0s
+        colAux1 = (priColPieza + 1) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
 
+        colAux2 = priColPieza / 8;
+        mascara2 = (0x80 >> (priColPieza % 8));
+        Tablero[(filaAux2 * ancho) + colAux2] ^= mascara2;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza += 1;
+    }
+}
+void desplazarDerTRot1(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int filaAux3 = ultFilaPieza - 2;
+    int colAux1 = (priColPieza + 2) / 8;
+    unsigned char mascara1 = (0x80 >> ((priColPieza + 2) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux1] & mascara) == mascara) &&
+        ((Tablero[(filaAux3 * ancho) + colAux1] & mascara1)== mascara1)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux1] |= mascara;
+        Tablero[(filaAux3 * ancho) + colAux1] |= mascara1;
+        // Ingresa 0s
+        colAux1 = (priColPieza + 1) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
 
+        colAux1 = priColPieza / 8;
+        mascara1 = (0x80 >> (priColPieza % 8));
+        Tablero[(filaAux2 * ancho) + colAux1] ^= mascara1;
 
+        colAux1 = (priColPieza + 1) / 8;
+        mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux3 * ancho) + colAux1] ^= mascara1;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza += 1;
+    }
+}
+void desplazarDerTRot2(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int colAux1 = (priColPieza + 3) / 8;
+    int colAux2 = (priColPieza + 2) / 8;
+    unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
+    unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        // Ingresa 0s
+        colAux1 = priColPieza/ 8;
+        mascara1 = (0x80 >> (priColPieza % 8));
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
 
+        colAux2 = (priColPieza + 1) / 8;
+        mascara2 = (0x80 >> ((priColPieza + 1) % 8));
+        Tablero[(filaAux2 * ancho) + colAux2] ^= mascara2;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza += 1;
+    }
+}
+void desplazarDerTRot3(){
+    int filaAux1 = ultFilaPieza;
+    int filaAux2 = ultFilaPieza - 1;
+    int filaAux3 = ultFilaPieza - 2;
+    int colAux1 = (priColPieza + 1) / 8;
+    unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
+    int colAux2 = (priColPieza + 2)/ 8;
+    unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
+    if(((Tablero[(filaAux1 * ancho) + colAux1] & mascara1)== mascara1) &&
+        ((Tablero[(filaAux2 * ancho) + colAux2] & mascara2) == mascara2) &&
+        ((Tablero[(filaAux3 * ancho) + colAux1] & mascara1)== mascara1)){
+        // Ingresa 1s
+        Tablero[(filaAux1 * ancho) + colAux1] |= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux2] |= mascara2;
+        Tablero[(filaAux3 * ancho) + colAux1] |= mascara1;
+        // Ingresa 0s
+        colAux1 = priColPieza / 8;
+        mascara1 = (0x80 >> (priColPieza % 8));
 
-
-
+        Tablero[(filaAux1 * ancho) + colAux1] ^= mascara1;
+        Tablero[(filaAux2 * ancho) + colAux1] ^= mascara1;
+        Tablero[(filaAux3 * ancho) + colAux1] ^= mascara1;
+        // Actualizacion de la variable que referencia a la columna de la pieza
+        priColPieza += 1;
+    }
+}
 
 

@@ -11,4 +11,13 @@ void bajarPiezaTRot1();
 void bajarPiezaTRot2();
 void bajarPiezaTRot3();
 
+void desplazarIzqTOrigin();
+void desplazarIzqTRot1();
+void desplazarIzqTRot2();
+void desplazarIzqTRot3();
+
+void desplazarDerTOrigin();
+void desplazarDerTRot1();
+void desplazarDerTRot2();
+void desplazarDerTRot3();
 #endif // MODPIEZAT_H

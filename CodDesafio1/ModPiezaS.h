@@ -1,10 +1,9 @@
 #ifndef MODPIEZAS_H
 #define MODPIEZAS_H
 
-extern int priColPiezaS;
-extern int ultFilaPiezaS;
+extern bool fijarPieza;
 
-void rota1PiezaS();
-void rota2PiezaS();
+void rota1PiezaS(const int &x);
+void rota2PiezaS(const int &x);
 
 #endif // MODPIEZAS_H

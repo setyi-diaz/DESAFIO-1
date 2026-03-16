@@ -3,24 +3,22 @@
 #include "ModPiezaS.h"
 #include "ModTablero.h"
 
-int priColPiezaS = (ancho / 2) - 2;
-int ultFilaPiezaS = alto - 1;
 
-void rota1PiezaS()
+void rota1PiezaS(const int &x)
 {
-    int bytesPorFila = ancho / 8;
+    int bytesPorFila = x / 8;
 
-    int filaApaga1 = ultFilaPiezaS - 1;
-    int colApaga1 = priColPiezaS + 2;
+    int filaApaga1 = ultFilaPieza - 1;
+    int colApaga1 = priColPieza + 2;
 
-    int filaApaga2 = ultFilaPiezaS;
-    int colApaga2 = priColPiezaS;
+    int filaApaga2 = ultFilaPieza;
+    int colApaga2 = priColPieza;
 
-    int filaEnciende1 = ultFilaPiezaS - 2;
-    int colEnciende1 = priColPiezaS + 1;
+    int filaEnciende1 = ultFilaPieza - 2;
+    int colEnciende1 = priColPieza + 1;
 
-    int filaEnciende2 = ultFilaPiezaS;
-    int colEnciende2 = priColPiezaS + 2;
+    int filaEnciende2 = ultFilaPieza;
+    int colEnciende2 = priColPieza + 2;
 
     int byteApaga1 = colApaga1 / 8;
     int byteApaga2 = colApaga2 / 8;
@@ -39,22 +37,22 @@ void rota1PiezaS()
     Tablero[(filaEnciende2 * bytesPorFila) + byteEnciende2] |= mascaraEnciende2;
 }
 
-void rota2PiezaS()
+void rota2PiezaS(const int &x)
 {
-    int bytesPorFila = ancho / 8;
+    int bytesPorFila = x / 8;
 
 
-    int filaApaga1 = ultFilaPiezaS - 2;
-    int colApaga1 = priColPiezaS + 1;
+    int filaApaga1 = ultFilaPieza - 2;
+    int colApaga1 = priColPieza + 1;
 
-    int filaApaga2 = ultFilaPiezaS;
-    int colApaga2 = priColPiezaS + 2;
+    int filaApaga2 = ultFilaPieza;
+    int colApaga2 = priColPieza + 2;
 
-    int filaEnciende1 = ultFilaPiezaS - 1;
-    int colEnciende1 = priColPiezaS + 2;
+    int filaEnciende1 = ultFilaPieza - 1;
+    int colEnciende1 = priColPieza + 2;
 
-    int filaEnciende2 = ultFilaPiezaS;
-    int colEnciende2 = priColPiezaS;
+    int filaEnciende2 = ultFilaPieza;
+    int colEnciende2 = priColPieza;
 
     int byteApaga1 = colApaga1 / 8;
     int byteApaga2 = colApaga2 / 8;

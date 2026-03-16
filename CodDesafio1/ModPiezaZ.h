@@ -1,15 +1,17 @@
 #ifndef MODPIEZAZ_H
 #define MODPIEZAZ_H
 
-void rota1PiezaZ();
-void rota2PiezaZ();
+extern bool fijarPieza;
 
-void bajarPiezaZOrigin();
-void bajarPiezaZRot1();
+void rota1PiezaZ(const int &x);
+void rota2PiezaZ(const int &x);
 
-void desplazarIzqZorigin();
-void desplazarIzqZRot1();
+void bajarPiezaZOrigin(const int &x);
+void bajarPiezaZRot1(const int &x);
 
-void desplazarDerZOrigin();
-void desplazarDerZRot1();
+void desplazarIzqZorigin(const int &x);
+void desplazarIzqZRot1(const int &x);
+
+void desplazarDerZOrigin(const int &x);
+void desplazarDerZRot1(const int &x);
 #endif // MODPIEZAZ_H

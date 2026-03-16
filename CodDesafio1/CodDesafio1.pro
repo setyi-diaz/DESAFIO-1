@@ -8,10 +8,12 @@ SOURCES += \
         ModPiezaZ.cpp \
         ModPiezaS.cpp \
         ModTablero.cpp \
+        ModValidaciones.cpp \
         main.cpp
 
 HEADERS += \
     ModPiezaT.h \
     ModPiezaZ.h \
     ModPiezaS.h \
-    ModTablero.h
+    ModTablero.h \
+    ModValidaciones.h

@@ -4,6 +4,7 @@
 #include "ModPiezaT.h"
 #include "ModPiezaZ.h"
 #include "ModPiezaS.h"
+#include "ModPiezaJ.h"
 #include "ModValidaciones.h"
 
 using namespace std;
@@ -15,7 +16,7 @@ int main()
     unsigned char accion;
     short int piezaEnJuego;
     short int rotEnJuego = 0;
-    char Piezas[3] = {'T','Z','S'};
+    char Piezas[4] = {'T','Z','S','J'};
     char rotacionPieza[4] = {'0','1','2','3'};
 
     cout<<"Ingrese el alto del tablero: ";

@@ -43,20 +43,18 @@ void mostrarTablero(const int &x,const int &y){
 unsigned int generarPiezaAlea(){
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<unsigned int> dist(0, 2);
+    std::uniform_int_distribution<unsigned int> dist(0, 3);
 
     return dist(gen);
 }
-void desplazarFilas(const int &x, int f){
-    unsigned char* filaReciclada = Tablero[f];
-
-    for(int i = f; i > 0; --i){
-        Tablero[i] = Tablero[i - 1];
-    }
-
-    Tablero[0] = filaReciclada;
-
-    for(int j = 0; j < x; ++j){
-        Tablero[0][j] = 0x00;
+void desplazarFilas(const int &x){
+    for (int i = ultFilaPieza; i >= 0; i--){
+        if(i == 0){
+            Tablero[0] = &Tablero[ultFilaPieza][0];
+            for(int j = 0; j < x; j++){
+                Tablero[0][j] &= 0x00;
+            }
+        }
+        else Tablero[i] = &Tablero[i-1][0];
     }
 }

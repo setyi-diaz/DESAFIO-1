@@ -4,6 +4,8 @@
 #include "ModTablero.h"  // para acceder a las dimensiones del tablero, fila y columna de referencia a la pieza
 #include "ModValidaciones.h"
 
+bool fijarPieza = false;
+
 void rota1PiezaT(){
     unsigned char mascara = (0x80 >> (priColPieza + 1) % 8);
     // Ingresa 1s

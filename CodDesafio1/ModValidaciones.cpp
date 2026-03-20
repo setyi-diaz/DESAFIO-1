@@ -81,26 +81,16 @@ bool valAnchoTablero(const int &x){
     }
     else return false;
 }
-int valEliminarFila(const int &x){
+bool valEliminarFila(const int &x){
     unsigned char mascara = 0xFF;
-    bool ban = true;
-
-    for (int fila = ultFilaPieza; fila >= (ultFilaPieza - 2); fila--){
-        for (int i= 0; i < x; i++){
-            if((mascara & Tablero[fila][i]) != mascara){
-                ban = false;
-                break;
-            }
+    for (int i= 0; i < x; i++){
+        if((mascara & Tablero[ultFilaPieza][i]) != mascara){
+            return false;
         }
-        if(ban == true){
-            std::cout<<"hay que eliminar la fila\n";
-            std::cout<<fila<<'\n';
-            return fila;
-        }
-        ban = true;
     }
-    return 0;
+    return true;
 }
+
 
 
 

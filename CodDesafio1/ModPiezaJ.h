@@ -1,27 +1,26 @@
 #ifndef MODPIEZAJ_H
 #define MODPIEZAJ_H
 
-extern int priColPiezaJ;
-extern int ultFilaPiezaJ;
+extern bool fijarPieza;
 
-void rota1PiezaJ(const int &x);
-void rota2PiezaJ(const int &x);
-void rota3PiezaJ(const int &x);
-void rota4PiezaJ(const int &x);
+void rota1PiezaJ();
+void rota2PiezaJ();
+void rota3PiezaJ();
+void rota4PiezaJ();
 
-void bajarPiezaJOrigin(const int &x);
-void bajarPiezaJRot1(const int &x);
-void bajarPiezaJRot2(const int &x);
-void bajarPiezaJRot3(const int &x);
+void bajarPiezaJOrigin();
+void bajarPiezaJRot1();
+void bajarPiezaJRot2();
+void bajarPiezaJRot3();
 
 void moverDerechaPiezaJOrigin(const int &x);
 void moverDerechaPiezaJRot1(const int &x);
 void moverDerechaPiezaJRot2(const int &x);
 void moverDerechaPiezaJRot3(const int &x);
 
-void moverIzquierdaPiezaJOrigin(const int &x);
-void moverIzquierdaPiezaJRot1(const int &x);
-void moverIzquierdaPiezaJRot2(const int &x);
-void moverIzquierdaPiezaJRot3(const int &x);
+void moverIzquierdaPiezaJOrigin();
+void moverIzquierdaPiezaJRot1();
+void moverIzquierdaPiezaJRot2();
+void moverIzquierdaPiezaJRot3();
 
 #endif // MODPIEZAJ_H

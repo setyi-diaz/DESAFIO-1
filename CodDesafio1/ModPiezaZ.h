@@ -3,14 +3,14 @@
 
 extern bool fijarPieza;
 
-void rota1PiezaZ(const int &x);
-void rota2PiezaZ(const int &x);
+void rota1PiezaZ();
+void rota2PiezaZ();
 
-void bajarPiezaZOrigin(const int &x);
-void bajarPiezaZRot1(const int &x);
+void bajarPiezaZOrigin();
+void bajarPiezaZRot1();
 
-void desplazarIzqZorigin(const int &x);
-void desplazarIzqZRot1(const int &x);
+void desplazarIzqZorigin();
+void desplazarIzqZRot1();
 
 void desplazarDerZOrigin(const int &x);
 void desplazarDerZRot1(const int &x);

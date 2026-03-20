@@ -3,11 +3,12 @@
 
 extern  int priColPieza;
 extern  int ultFilaPieza;
-extern char* Tablero;
+extern unsigned char** Tablero;
 
 void crearTablero(const int &x,const int &y);
-void borrarTablero();
+void borrarTablero(const int &y);
 void mostrarTablero(const int &x,const int &y);
 unsigned int generarPiezaAlea();
+void desplazarFilas(const int &x);
 
 #endif // MODTABLERO_H

@@ -81,14 +81,28 @@ bool valAnchoTablero(const int &x){
     }
     else return false;
 }
-bool valEliminarFila(const int &x){
+int valEliminarFila(const int &x){
     unsigned char mascara = 0xFF;
-    for (int i= 0; i < x; i++){
-        if((mascara & Tablero[ultFilaPieza][i]) != mascara){
-            return false;
-        }
+    bool ban = true;
+
+    int filaMin = ultFilaPieza - 2;
+    if(filaMin < 0){
+        filaMin = 0;
     }
-    return true;
+
+    for (int fila = ultFilaPieza; fila >= filaMin; fila--){
+        for (int i = 0; i < x; i++){
+            if((mascara & Tablero[fila][i]) != mascara){
+                ban = false;
+                break;
+            }
+        }
+        if(ban == true){
+            return fila;
+        }
+        ban = true;
+    }
+    return -1;
 }
 
 

@@ -148,7 +148,7 @@ void moverDerechaPiezaSOrigin()
         priColPieza += 1;
     }
     else {
-        fijarPieza = true;
+        return;;
     }
 }
 
@@ -179,7 +179,7 @@ void moverDerechaPiezaSRot1()
         priColPieza += 1;
     }
     else {
-        fijarPieza = true;
+        return;;
     }
 }
 
@@ -189,7 +189,7 @@ void moverIzquierdaPiezaSOrigin()
     unsigned char mascara2 = (0x80 >> ((priColPieza - 1) % 8));
 
     if (priColPieza == 0) {
-        fijarPieza = true;
+        return;
     }
     else if (((Tablero[(ultFilaPieza - 1)][(priColPieza / 8)] & mascara1) == 0x00) &&
              ((Tablero[(ultFilaPieza)][((priColPieza - 1) / 8)] & mascara2) == 0x00)) {
@@ -218,7 +218,7 @@ void moverIzquierdaPiezaSRot1()
     unsigned char mascara3 = (0x80 >> (priColPieza % 8));
 
     if (priColPieza == 0) {
-        fijarPieza = true;
+        return;
     }
     else if (((Tablero[(ultFilaPieza - 2)][((priColPieza - 1) / 8)] & mascara1) == 0x00) &&
              ((Tablero[(ultFilaPieza - 1)][((priColPieza - 1) / 8)] & mascara2) == 0x00) &&

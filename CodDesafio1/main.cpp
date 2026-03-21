@@ -37,7 +37,7 @@ int main()
 
     do{
         piezaEnJuego = generarPiezaAlea();
-
+        //piezaEnJuego = 1;
         fijarPieza = false;
         rotEnJuego = 0;
         ultFilaPieza = -1;
@@ -51,7 +51,7 @@ int main()
             bool bloqueaLateralOrigin = (ultFilaPieza == -1 || ultFilaPieza == 0);
             bool bloqueaLateralRotada = (ultFilaPieza == -1 || ultFilaPieza == 0 || ultFilaPieza == 1);
             bool bloqueaRotacion = (ultFilaPieza == -1 || ultFilaPieza == 0 || ultFilaPieza == 1);
-
+            cout << Piezas[piezaEnJuego]<< endl;
             switch (accion) {
 
             case 'A':
@@ -320,9 +320,12 @@ int main()
                 cout << "Opcion invalida!!";
                 break;
             }
-
-            if(accion != 'Q' && ultFilaPieza != -1 && valEliminarFila(ancho)){
-                fijarPieza = true;
+            if(accion != 'Q' && ultFilaPieza != -1){
+                int f = valEliminarFila(ancho);
+                if(f != -1){
+                    desplazarFilas(ancho, f);
+                    fijarPieza = true;
+                }
             }
 
         }while(fijarPieza == false && (ultFilaPieza + 1) < alto);

@@ -93,14 +93,16 @@ void bajarPiezaZRot1(){
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
     }
-    else fijarPieza = true;
+    else {
+        fijarPieza = true;
+    }
 }
 void desplazarIzqZorigin(){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza - 1) % 8));
 
     if(priColPieza == 0){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza)][(priColPieza / 8)] & mascara1)== 0x00) &&
         ((Tablero[(ultFilaPieza - 1)][((priColPieza - 1) / 8)] & mascara2) == 0x00)){
@@ -116,14 +118,16 @@ void desplazarIzqZorigin(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else fijarPieza = true;
+    else {
+        fijarPieza = true;
+    }
 }
 void desplazarIzqZRot1(){
     unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
     unsigned char mascara2 = (0x80 >> (priColPieza % 8));
 
     if(priColPieza == 0){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza)][((priColPieza - 1) / 8)] & mascara1)== 0x00) &&
         ((Tablero[(ultFilaPieza - 1)][((priColPieza - 1) / 8)] & mascara1) == 0x00) &&
@@ -143,14 +147,16 @@ void desplazarIzqZRot1(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else fijarPieza = true;
+    else {
+        fijarPieza = true;
+    }
 }
 void desplazarDerZOrigin(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
     if((priColPieza + 3) == x*8){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza)][((priColPieza + 3) / 8)] & mascara1)== 0x00) &&
                ((Tablero[(ultFilaPieza - 1)][((priColPieza + 2) / 8)] & mascara2) == 0x00)){
@@ -166,14 +172,16 @@ void desplazarDerZOrigin(const int &x){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
     }
-    else fijarPieza = true;
+    else {
+        fijarPieza = true;
+    }
 }
 void desplazarDerZRot1(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
     if((priColPieza + 2) == x*8){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza)][((priColPieza + 1) / 8)] & mascara1)== 0x00) &&
         ((Tablero[(ultFilaPieza - 1)][((priColPieza + 2) / 8)] & mascara2) == 0x00) &&
@@ -192,5 +200,7 @@ void desplazarDerZRot1(const int &x){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
     }
-    else fijarPieza = true;
+    else {
+        fijarPieza = true;
+    }
 }

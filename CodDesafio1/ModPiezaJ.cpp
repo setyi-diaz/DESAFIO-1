@@ -207,7 +207,7 @@ void moverDerechaPiezaJOrigin(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
 
     if((priColPieza + 3) == x * 8){
-        fijarPieza = true;
+        return;
     }
     else if(ultFilaPieza == 1){
         unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
@@ -253,7 +253,7 @@ void moverDerechaPiezaJRot1(const int &x){
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
     if((priColPieza + 3) == x * 8){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza - 1)][((priColPieza + 3) / 8)] & mascara1) == 0x00) &&
             ((Tablero[(ultFilaPieza)][((priColPieza + 1) / 8)] & mascara2) == 0x00)){
@@ -275,7 +275,7 @@ void moverDerechaPiezaJRot2(const int &x){
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
     if((priColPieza + 2) == x * 8){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza - 2)][((priColPieza + 2) / 8)] & mascara1) == 0x00) &&
             ((Tablero[(ultFilaPieza - 1)][((priColPieza + 1) / 8)] & mascara2) == 0x00) &&
@@ -299,7 +299,7 @@ void moverDerechaPiezaJRot3(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
 
     if((priColPieza + 3) == x * 8){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza - 1)][((priColPieza + 3) / 8)] & mascara1) == 0x00) &&
             ((Tablero[(ultFilaPieza)][((priColPieza + 3) / 8)] & mascara1) == 0x00)){
@@ -321,8 +321,8 @@ void moverIzquierdaPiezaJOrigin(){
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara3 = (0x80 >> (priColPieza % 8));
 
-    if(priColPieza == 0){
-        fijarPieza = true;
+    if(priColPieza == -1){
+        return;
     }
     else if(ultFilaPieza == 1){
         if(((Tablero[0][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
@@ -361,7 +361,7 @@ void moverIzquierdaPiezaJRot1(){
     unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
 
     if(priColPieza == 0){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza - 1)][((priColPieza - 1) / 8)] & mascara1) == 0x00) &&
             ((Tablero[(ultFilaPieza)][((priColPieza - 1) / 8)] & mascara1) == 0x00)){
@@ -382,7 +382,7 @@ void moverIzquierdaPiezaJRot2(){
     unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
 
     if(priColPieza == 0){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza - 2)][((priColPieza - 1) / 8)] & mascara1) == 0x00) &&
             ((Tablero[(ultFilaPieza - 1)][((priColPieza - 1) / 8)] & mascara1) == 0x00) &&
@@ -407,7 +407,7 @@ void moverIzquierdaPiezaJRot3(){
     unsigned char mascara2 = (0x80 >> ((priColPieza - 1) % 8));
 
     if(priColPieza == 0){
-        fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza - 1)][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
             ((Tablero[(ultFilaPieza)][((priColPieza - 1) / 8)] & mascara2) == 0x00)){

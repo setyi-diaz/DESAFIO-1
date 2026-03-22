@@ -4,7 +4,7 @@
 #include "ModTablero.h"  // para acceder a las dimensiones del tablero, fila y columna de referencia a la pieza
 #include "ModValidaciones.h"
 
-void rota1PiezaZ(){
+bool rota1PiezaZ(){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
@@ -19,9 +19,11 @@ void rota1PiezaZ(){
 
         mascara2 = (0x80 >> ((priColPieza + 2) % 8));
         Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] ^= mascara2;
+        return true;
     }
+    return false;
 }
-void rota2PiezaZ(){
+bool rota2PiezaZ(){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
@@ -36,7 +38,9 @@ void rota2PiezaZ(){
 
         mascara2 = (0x80 >> ((priColPieza + 1) % 8));
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] ^= mascara2;
+        return true;
     }
+    else return false;
 }
 void bajarPiezaZOrigin(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
@@ -127,9 +131,6 @@ void desplazarIzqZorigin(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
 }
 void desplazarIzqZRot1(){
     unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
@@ -156,9 +157,6 @@ void desplazarIzqZRot1(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
 }
 void desplazarDerZOrigin(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
@@ -180,9 +178,6 @@ void desplazarDerZOrigin(const int &x){
         Tablero[(ultFilaPieza - 1)][(priColPieza / 8)] ^= mascara2;
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
-    }
-    else {
-        fijarPieza = true;
     }
 }
 void desplazarDerZRot1(const int &x){
@@ -208,8 +203,5 @@ void desplazarDerZRot1(const int &x){
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] ^= mascara2;
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
-    }
-    else {
-        fijarPieza = true;
     }
 }

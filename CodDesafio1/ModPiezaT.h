@@ -2,9 +2,9 @@
 #define MODPIEZAT_H
 
 void rota1PiezaT();
-void rota2PiezaT();
-void rota3PiezaT();
-void rota4PiezaT();
+bool rota2PiezaT();
+bool rota3PiezaT();
+bool rota4PiezaT();
 
 void bajarPiezaTOrigin(const int &y);
 void bajarPiezaTRot1(const int &y);

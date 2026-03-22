@@ -268,26 +268,31 @@ int main()
                             rotEnJuego = 1;
                         }
                         else if(rotEnJuego == 1){
-                            rota2PiezaT();
-                            rotEnJuego = 2;
+                            if(rota2PiezaT() == true){
+                                rotEnJuego = 2;
+                            }
                         }
                         else if(rotEnJuego == 2){
-                            rota3PiezaT();
-                            rotEnJuego = 3;
+                            if(rota3PiezaT() == true){
+                                rotEnJuego = 3;
+                            }
                         }
                         else if(rotEnJuego == 3){
-                            rota4PiezaT();
-                            rotEnJuego = 0;
+                            if(rota4PiezaT() == true){
+                                rotEnJuego = 0;
+                            }
                         }
                     }
                     else if(Piezas[piezaEnJuego] == 'Z'){
                         if(rotEnJuego == 0){
-                            rota1PiezaZ();
-                            rotEnJuego = 1;
+                            if(rota1PiezaZ() == true){
+                                rotEnJuego = 1;
+                            }
                         }
                         else if(rotEnJuego == 1){
-                            rota2PiezaZ();
-                            rotEnJuego = 0;
+                            if(rota2PiezaZ() == true){
+                                rotEnJuego = 0;
+                            }
                         }
                     }
                     else if(Piezas[piezaEnJuego] == 'S'){

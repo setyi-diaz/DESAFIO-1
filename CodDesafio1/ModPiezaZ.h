@@ -1,8 +1,8 @@
 #ifndef MODPIEZAZ_H
 #define MODPIEZAZ_H
 
-void rota1PiezaZ();
-void rota2PiezaZ();
+bool rota1PiezaZ();
+bool rota2PiezaZ();
 
 void bajarPiezaZOrigin(const int &y);
 void bajarPiezaZRot1(const int &y);

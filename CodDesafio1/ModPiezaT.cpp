@@ -13,7 +13,7 @@ void rota1PiezaT(){
     mascara = (0x80 >> (priColPieza + 2) % 8);
     Tablero[(ultFilaPieza - 1)][(priColPieza + 2)/8] ^= mascara;
 }
-void rota2PiezaT(){
+bool rota2PiezaT(){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
@@ -27,9 +27,11 @@ void rota2PiezaT(){
 
         mascara2 = (0x80 >> ((priColPieza + 1) % 8));
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] ^= mascara2;
+        return true;
     }
+    else return false;
 }
-void rota3PiezaT(){
+bool rota3PiezaT(){
     unsigned char mascara = (0x80 >> (priColPieza % 8));
 
     if(((Tablero[(ultFilaPieza - 1)][(priColPieza / 8)] & mascara) == 0x00) &&
@@ -43,9 +45,11 @@ void rota3PiezaT(){
 
         mascara = (0x80 >> ((priColPieza + 2) % 8));
         Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] ^= mascara;
+        return true;
     }
+    else return false;
 }
-void rota4PiezaT(){
+bool rota4PiezaT(){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
@@ -58,7 +62,9 @@ void rota4PiezaT(){
         mascara1 = (0x80 >> (priColPieza % 8));
         Tablero[(ultFilaPieza)][(priColPieza / 8)] ^= mascara1;
         Tablero[(ultFilaPieza - 2)][(priColPieza / 8)] ^= mascara1;
+        return true;
     }
+    else return false;
 }
 
 void bajarPiezaTOrigin(const int &y){
@@ -193,9 +199,6 @@ void desplazarIzqTOrigin(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
 }
 void desplazarIzqTRot1(){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
@@ -219,9 +222,6 @@ void desplazarIzqTRot1(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
 }
 void desplazarIzqTRot2(){
     unsigned char mascara1 = (0x80 >> ((priColPieza - 1) % 8));
@@ -242,9 +242,6 @@ void desplazarIzqTRot2(){
         Tablero[(ultFilaPieza - 1)][((priColPieza + 1) / 8)] ^= mascara2;
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
-    }
-    else {
-        fijarPieza = true;
     }
 }
 void desplazarIzqTRot3(){
@@ -270,9 +267,6 @@ void desplazarIzqTRot3(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
 }
 void desplazarDerTOrigin(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 2) % 8));
@@ -293,9 +287,6 @@ void desplazarDerTOrigin(const int &x){
         Tablero[(ultFilaPieza - 1)][(priColPieza / 8)] ^= mascara2;
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
-    }
-    else {
-        fijarPieza = true;
     }
 }
 void desplazarDerTRot1(const int &x){
@@ -321,9 +312,6 @@ void desplazarDerTRot1(const int &x){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
     }
-    else {
-        fijarPieza = true;
-    }
 }
 void desplazarDerTRot2(const int &x){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
@@ -344,9 +332,6 @@ void desplazarDerTRot2(const int &x){
         Tablero[(ultFilaPieza - 1)][((priColPieza + 1) / 8)] ^= mascara2;
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
-    }
-    else {
-        fijarPieza = true;
     }
 }
 void desplazarDerTRot3(const int &x){
@@ -370,9 +355,6 @@ void desplazarDerTRot3(const int &x){
         Tablero[(ultFilaPieza - 2)][(priColPieza / 8)] ^= mascara1;
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
-    }
-    else {
-        fijarPieza = true;
     }
 }
 

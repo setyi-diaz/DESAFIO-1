@@ -61,7 +61,7 @@ void rota4PiezaT(){
     }
 }
 
-void bajarPiezaTOrigin(){
+void bajarPiezaTOrigin(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara3 = (0x80 >> ((priColPieza + 2) % 8));
@@ -91,12 +91,18 @@ void bajarPiezaTOrigin(){
         Tablero[(ultFilaPieza - 1)][((priColPieza + 2) / 8)] ^= mascara3;
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else if (validar == '0'){
         fijarPieza = true;
     }
+    else{
+        gameOver = true;
+    }
 }
-void bajarPiezaTRot1(){
+void bajarPiezaTRot1(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
@@ -111,12 +117,15 @@ void bajarPiezaTRot1(){
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] ^= mascara2;
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else {
         fijarPieza = true;
     }
 }
-void bajarPiezaTRot2(){
+void bajarPiezaTRot2(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara3 = (0x80 >> ((priColPieza + 2) % 8));
@@ -134,12 +143,15 @@ void bajarPiezaTRot2(){
         Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] ^= mascara3;
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else {
         fijarPieza = true;
     }
 }
-void bajarPiezaTRot3(){
+void bajarPiezaTRot3(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
@@ -153,6 +165,9 @@ void bajarPiezaTRot3(){
         Tablero[(ultFilaPieza - 1)][((priColPieza + 1) / 8)] ^= mascara2;
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else {
         fijarPieza = true;

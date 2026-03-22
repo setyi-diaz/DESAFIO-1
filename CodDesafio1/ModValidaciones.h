@@ -2,6 +2,7 @@
 #define MODVALIDACIONES_H
 
 extern bool fijarPieza;
+extern bool gameOver;
 
 bool valAnchoTablero(const int &x);
 char valBajarPiezaTOrigin();

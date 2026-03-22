@@ -10,5 +10,6 @@ void borrarTablero(const int &y);
 void mostrarTablero(const int &x,const int &y);
 unsigned int generarPiezaAlea();
 void desplazarFilas(const int &x, int f);
+void reiniciarTablero(const int &x, const int &y);
 
 #endif // MODTABLERO_H

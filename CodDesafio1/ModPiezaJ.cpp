@@ -81,18 +81,18 @@ void rota4PiezaJ(){
     }
 }
 
-void bajarPiezaJOrigin(){
+void bajarPiezaJOrigin(const int &y){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
     if(ultFilaPieza == -1){
-        if(((Tablero[0][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
-           ((Tablero[0][((priColPieza + 2) / 8)] & mascara2) == 0x00)){
+        if(((Tablero[2][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
+           ((Tablero[2][((priColPieza + 2) / 8)] & mascara2) == 0x00)){
             Tablero[0][((priColPieza + 1) / 8)] |= mascara1;
             Tablero[0][((priColPieza + 2) / 8)] |= mascara2;
             ultFilaPieza += 1;
         }
-        else fijarPieza = true;
+        else gameOver = true;
     }
     else if(ultFilaPieza == 0){
         if(((Tablero[1][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
@@ -129,11 +129,14 @@ void bajarPiezaJOrigin(){
         Tablero[(ultFilaPieza)][((priColPieza + 1) / 8)] &= (unsigned char)(~mascara1);
 
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else fijarPieza = true;
 }
 
-void bajarPiezaJRot1(){
+void bajarPiezaJRot1(const int &y){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
     unsigned char mascara3 = (0x80 >> (priColPieza % 8));
@@ -155,11 +158,14 @@ void bajarPiezaJRot1(){
         Tablero[(ultFilaPieza - 1)][((priColPieza + 2) / 8)] &= (unsigned char)(~mascara6);
 
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else fijarPieza = true;
 }
 
-void bajarPiezaJRot2(){
+void bajarPiezaJRot2(const int &y){
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> (priColPieza % 8));
 
@@ -176,11 +182,14 @@ void bajarPiezaJRot2(){
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] &= (unsigned char)(~mascara4);
 
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else fijarPieza = true;
 }
 
-void bajarPiezaJRot3(){
+void bajarPiezaJRot3(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara3 = (0x80 >> ((priColPieza + 2) % 8));
@@ -199,6 +208,9 @@ void bajarPiezaJRot3(){
         Tablero[(ultFilaPieza)][((priColPieza + 1) / 8)] &= (unsigned char)(~mascara2);
 
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else fijarPieza = true;
 }

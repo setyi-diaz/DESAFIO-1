@@ -6,10 +6,10 @@ void rota2PiezaT();
 void rota3PiezaT();
 void rota4PiezaT();
 
-void bajarPiezaTOrigin();
-void bajarPiezaTRot1();
-void bajarPiezaTRot2();
-void bajarPiezaTRot3();
+void bajarPiezaTOrigin(const int &y);
+void bajarPiezaTRot1(const int &y);
+void bajarPiezaTRot2(const int &y);
+void bajarPiezaTRot3(const int &y);
 
 void desplazarIzqTOrigin();
 void desplazarIzqTRot1();

@@ -4,8 +4,8 @@
 void rota1PiezaZ();
 void rota2PiezaZ();
 
-void bajarPiezaZOrigin();
-void bajarPiezaZRot1();
+void bajarPiezaZOrigin(const int &y);
+void bajarPiezaZRot1(const int &y);
 
 void desplazarIzqZorigin();
 void desplazarIzqZRot1();

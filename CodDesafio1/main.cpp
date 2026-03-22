@@ -17,7 +17,7 @@ int main()
     unsigned char accion;
     short int piezaEnJuego;
     short int rotEnJuego = 0;
-    char Piezas[4] = {'T','Z','S','J'};
+    char Piezas[5] = {'T','Z','S','J','C'};
     char rotacionPieza[4] = {'0','1','2','3'};
 
     cout << "Ingrese el alto del tablero: ";
@@ -37,14 +37,16 @@ int main()
 
     do{
         piezaEnJuego = generarPiezaAlea();
-        //piezaEnJuego = 1;
         fijarPieza = false;
+        gameOver = false;
         rotEnJuego = 0;
         ultFilaPieza = -1;
         priColPieza = ((ancho * 8) / 2) - 2;
 
         do{
             mostrarTablero(ancho, alto);
+            cout<<ultFilaPieza<<endl;
+            cout<<priColPieza<<endl;
             cout << "Accion: [A]Izq [D]Der [S]Bajar [W]Rotar [Q]Salir: ";
             cin >> accion;
 
@@ -197,53 +199,59 @@ int main()
                         }
                     }
                 }
+                else if(Piezas[piezaEnJuego] == 'C'){
+                    desplazarDerCuadrado(ancho);
+                }
                 break;
 
             case 'S':
                 if(ultFilaPieza < alto - 1){
                     if(Piezas[piezaEnJuego] == 'T'){
                         if(rotacionPieza[rotEnJuego] == '0'){
-                            bajarPiezaTOrigin();
+                            bajarPiezaTOrigin(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '1'){
-                            bajarPiezaTRot1();
+                            bajarPiezaTRot1(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '2'){
-                            bajarPiezaTRot2();
+                            bajarPiezaTRot2(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '3'){
-                            bajarPiezaTRot3();
+                            bajarPiezaTRot3(alto);
                         }
                     }
                     else if(Piezas[piezaEnJuego] == 'Z'){
                         if(rotacionPieza[rotEnJuego] == '0'){
-                            bajarPiezaZOrigin();
+                            bajarPiezaZOrigin(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '1'){
-                            bajarPiezaZRot1();
+                            bajarPiezaZRot1(alto);
                         }
                     }
                     else if(Piezas[piezaEnJuego] == 'S'){
                         if(rotacionPieza[rotEnJuego] == '0'){
-                            bajarPiezaSOrigin();
+                            bajarPiezaSOrigin(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '1'){
-                            bajarPiezaSRot1();
+                            bajarPiezaSRot1(alto);
                         }
                     }
                     else if(Piezas[piezaEnJuego] == 'J'){
                         if(rotacionPieza[rotEnJuego] == '0'){
-                            bajarPiezaJOrigin();
+                            bajarPiezaJOrigin(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '1'){
-                            bajarPiezaJRot1();
+                            bajarPiezaJRot1(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '2'){
-                            bajarPiezaJRot2();
+                            bajarPiezaJRot2(alto);
                         }
                         else if(rotacionPieza[rotEnJuego] == '3'){
-                            bajarPiezaJRot3();
+                            bajarPiezaJRot3(alto);
                         }
+                    }
+                    else if(Piezas[piezaEnJuego] == 'C'){
+                        bajarPiezaCuadrado(alto);
                     }
                 }
                 else{
@@ -317,19 +325,44 @@ int main()
                 break;
 
             default:
-                cout << "Opcion invalida!!";
+                cout << "Opcion invalida!!\n";
                 break;
             }
-            if(accion != 'Q' && ultFilaPieza != -1){
-                int f = valEliminarFila(ancho);
-                if(f != -1){
-                    desplazarFilas(ancho, f);
-                    fijarPieza = true;
+            if (gameOver == true){
+                cout<<"No hay espacio en el tablero para generar la pieza\n";
+                cout<<"********************GAME OVER**********************\n\n";
+                accion = 'N';
+                while(accion == 'N'){
+                    cout<<"Para volver a jugar, ingresa: 1\n";
+                    cout<<"Para salir del juego, ingresa: 0\n ";
+                    cin>>accion;
+                    if(accion == '0'){
+                        fijarPieza = true;
+                        accion = 'Q';
+                    }
+                    else if(accion == '1'){
+                        reiniciarTablero(ancho,alto);
+                        fijarPieza = true;
+                    }
+                    else{
+                        cout<<"Opcion invalida\n";
+                        accion = 'N';
+                    }
+                }
+            }
+            if(accion != 'Q' && ultFilaPieza != -1 && fijarPieza == true){
+                cout<<"se cumplio if para valEliminarFila\n";
+                for(short int cont = 0; cont < 4; cont++){
+                    int f = valEliminarFila(ancho);
+                    if(f != -1){
+                        cout<<"se ejecuto eliminar fila\n";
+                        desplazarFilas(ancho, f);
+                    }
                 }
             }
 
         }while(fijarPieza == false && (ultFilaPieza + 1) < alto);
-
+        cout<<"salio del while 1\n";
     }while(accion != 'Q');
 
     borrarTablero(alto);

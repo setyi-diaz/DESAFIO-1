@@ -6,8 +6,8 @@ extern bool fijarPieza;
 void rota1PiezaS(const int &x);
 void rota2PiezaS(const int &x);
 
-void bajarPiezaSOrigin();
-void bajarPiezaSRot1();
+void bajarPiezaSOrigin(const int &y);
+void bajarPiezaSRot1(const int &y);
 
 void moverDerechaPiezaSOrigin();
 void moverDerechaPiezaSRot1();

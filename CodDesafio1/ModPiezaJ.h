@@ -8,10 +8,10 @@ void rota2PiezaJ();
 void rota3PiezaJ();
 void rota4PiezaJ();
 
-void bajarPiezaJOrigin();
-void bajarPiezaJRot1();
-void bajarPiezaJRot2();
-void bajarPiezaJRot3();
+void bajarPiezaJOrigin(const int &y);
+void bajarPiezaJRot1(const int &y);
+void bajarPiezaJRot2(const int &y);
+void bajarPiezaJRot3(const int &y);
 
 void moverDerechaPiezaJOrigin(const int &x);
 void moverDerechaPiezaJRot1(const int &x);

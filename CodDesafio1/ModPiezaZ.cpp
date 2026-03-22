@@ -38,7 +38,7 @@ void rota2PiezaZ(){
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] ^= mascara2;
     }
 }
-void bajarPiezaZOrigin(){
+void bajarPiezaZOrigin(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara3 = (0x80 >> ((priColPieza + 2) % 8));
@@ -72,12 +72,18 @@ void bajarPiezaZOrigin(){
         Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] ^= mascara3;
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
+    }
+    else if (validacion == '4'){
+        gameOver = true;
     }
     else if (validacion == '0'){
         fijarPieza = true;
     }
 }
-void bajarPiezaZRot1(){
+void bajarPiezaZRot1(const int &y){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
 
@@ -92,6 +98,9 @@ void bajarPiezaZRot1(){
         Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] ^= mascara2;
         // Actualizacion de la variable que refencia a la fila de la pieza
         ultFilaPieza += 1;
+        if(ultFilaPieza == (y - 1)){
+            fijarPieza = true;
+        }
     }
     else {
         fijarPieza = true;

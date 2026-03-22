@@ -14,6 +14,13 @@ void crearTablero(const int &x, const int &y){
         Tablero[i] = new unsigned char [x]{0};
     }
 }
+void reiniciarTablero(const int &x, const int &y){
+    for(int fila = 0; fila < y; fila++){
+        for(int col = 0; col < x; col++){
+            Tablero[fila][col] = 0x00;
+        }
+    }
+}
 void borrarTablero(const int &y){
     if (Tablero == nullptr) return;
     for (int i = 0; i < y; i++) {
@@ -43,7 +50,7 @@ void mostrarTablero(const int &x,const int &y){
 unsigned int generarPiezaAlea(){
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<unsigned int> dist(0, 3);
+    std::uniform_int_distribution<unsigned int> dist(0, 4);
 
     return dist(gen);
 }

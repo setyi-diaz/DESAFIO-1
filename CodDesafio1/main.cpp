@@ -26,7 +26,7 @@ int main()
     cin >> ancho;
 
     while(valAnchoTablero(ancho)){
-        cout << "Ingrese un multiplo de 8 para el ancho del tablero: ";
+        cout << "Ingrese un multiplo de 8 y no mayor a 48 para el ancho del tablero: ";
         cin >> ancho;
     }
 
@@ -49,7 +49,9 @@ int main()
             cout<<priColPieza<<endl;
             cout << "Accion: [A]Izq [D]Der [S]Bajar [W]Rotar [I]Salir: ";
             cin >> accion;
-
+            if(accion >= 'a' && accion <= 'z'){
+                accion = accion - 32;
+            }
             bool bloqueaLateralOrigin = (ultFilaPieza == -1 || ultFilaPieza == 0);
             bool bloqueaLateralRotada = (ultFilaPieza == -1 || ultFilaPieza == 0 || ultFilaPieza == 1);
             bool bloqueaRotacion = (ultFilaPieza == -1 || ultFilaPieza == 0 || ultFilaPieza == 1
@@ -297,18 +299,21 @@ int main()
                     }
                     else if(Piezas[piezaEnJuego] == 'S'){
                         if(rotEnJuego == 0){
-                            rota1PiezaS();
+                            if (rota1PiezaS()==true){
                             rotEnJuego = 1;
+                            }
                         }
                         else if(rotEnJuego == 1){
-                            rota2PiezaS();
+                            if (rota2PiezaS()==true){
                             rotEnJuego = 0;
+                            }
                         }
                     }
                     else if(Piezas[piezaEnJuego] == 'J'){
                         if(rotEnJuego == 0){
-                            rota1PiezaJ();
+                            if (rota1PiezaJ()==true){
                             rotEnJuego = 1;
+                            }
                         }
                         else if(rotEnJuego == 1){
                             rota2PiezaJ();
@@ -335,8 +340,15 @@ int main()
                 break;
             }
             if (gameOver == true){
-                cout<<"No hay espacio en el tablero para generar la pieza\n";
-                cout<<"********************GAME OVER**********************\n\n";
+                cout << "\n\n"
+                        "############################################################\n"
+                        "#                                                          #\n"
+                        "#                      GAME OVER                           #\n"
+                        "#                                                          #\n"
+                        "#      NO HAY ESPACIO EN EL TABLERO PARA GENERAR          #\n"
+                        "#                    LA SIGUIENTE PIEZA                    #\n"
+                        "#                                                          #\n"
+                        "############################################################\n\n";
                 accion = 'N';
                 while(accion == 'N'){
                     cout<<"Para volver a jugar, ingresa: 1\n";

@@ -4,7 +4,7 @@
 #include "ModTablero.h"
 #include "ModValidaciones.h"
 
-void rota1PiezaS(){
+bool rota1PiezaS(){
 
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> (priColPieza % 8));
@@ -21,10 +21,14 @@ void rota1PiezaS(){
 
         unsigned char mascara4 = (0x80 >> (priColPieza % 8));
         Tablero[(ultFilaPieza)][(priColPieza / 8)] &= (unsigned char)(~mascara4);
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
-void rota2PiezaS(){
+bool rota2PiezaS(){
 
     unsigned char mascara1 = (0x80 >> ((priColPieza + 2) % 8));
     unsigned char mascara2 = (0x80 >> (priColPieza % 8));
@@ -41,7 +45,11 @@ void rota2PiezaS(){
 
         unsigned char mascara4 = (0x80 >> (priColPieza % 8));
         Tablero[(ultFilaPieza - 1)][(priColPieza / 8)] &= (unsigned char)(~mascara4);
+        return true;
     }
+    else {
+        return false;
+       }
 }
 
 void bajarPiezaSOrigin(const int &y)
@@ -152,9 +160,7 @@ void moverDerechaPiezaSOrigin(const int &x)
 
         priColPieza += 1;
     }
-    else {
-        return;
-    }
+
 }
 
 void moverDerechaPiezaSRot1(const int &x)
@@ -187,9 +193,6 @@ void moverDerechaPiezaSRot1(const int &x)
 
         priColPieza += 1;
     }
-    else {
-        return;
-    }
 }
 
 void moverIzquierdaPiezaSOrigin()
@@ -215,9 +218,7 @@ void moverIzquierdaPiezaSOrigin()
 
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
+
 }
 
 void moverIzquierdaPiezaSRot1()
@@ -249,7 +250,5 @@ void moverIzquierdaPiezaSRot1()
 
         priColPieza -= 1;
     }
-    else {
-        fijarPieza = true;
-    }
+
 }

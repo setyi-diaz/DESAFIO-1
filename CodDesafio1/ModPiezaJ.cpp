@@ -4,11 +4,13 @@
 #include "ModTablero.h"
 #include "ModValidaciones.h"
 
-void rota1PiezaJ(){
+bool rota1PiezaJ(){
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara3 = (0x80 >> (priColPieza % 8));
-
+    if(priColPieza == -1){
+            return false;
+        }
     if(((Tablero[(ultFilaPieza - 1)][(priColPieza / 8)] & mascara1) == 0x00) &&
        ((Tablero[(ultFilaPieza - 1)][((priColPieza + 1) / 8)] & mascara2) == 0x00) &&
        ((Tablero[(ultFilaPieza)][(priColPieza / 8)] & mascara3) == 0x00)){
@@ -24,7 +26,9 @@ void rota1PiezaJ(){
         Tablero[(ultFilaPieza - 2)][((priColPieza + 2) / 8)] &= (unsigned char)(~mascara4);
         Tablero[(ultFilaPieza)][((priColPieza + 1) / 8)] &= (unsigned char)(~mascara5);
         Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] &= (unsigned char)(~mascara6);
+        return true;
     }
+    else return false;
 }
 
 void rota2PiezaJ(){
@@ -256,7 +260,6 @@ void moverDerechaPiezaJOrigin(const int &x){
 
             priColPieza += 1;
         }
-        else fijarPieza = true;
     }
 }
 
@@ -279,7 +282,7 @@ void moverDerechaPiezaJRot1(const int &x){
 
         priColPieza += 1;
     }
-    else fijarPieza = true;
+
 }
 
 void moverDerechaPiezaJRot2(const int &x){
@@ -304,7 +307,7 @@ void moverDerechaPiezaJRot2(const int &x){
 
         priColPieza += 1;
     }
-    else fijarPieza = true;
+
 }
 
 void moverDerechaPiezaJRot3(const int &x){
@@ -325,7 +328,7 @@ void moverDerechaPiezaJRot3(const int &x){
 
         priColPieza += 1;
     }
-    else fijarPieza = true;
+
 }
 
 void moverIzquierdaPiezaJOrigin(){
@@ -366,7 +369,7 @@ void moverIzquierdaPiezaJOrigin(){
 
         priColPieza -= 1;
     }
-    else fijarPieza = true;
+
 }
 
 void moverIzquierdaPiezaJRot1(){
@@ -387,7 +390,7 @@ void moverIzquierdaPiezaJRot1(){
 
         priColPieza -= 1;
     }
-    else fijarPieza = true;
+
 }
 
 void moverIzquierdaPiezaJRot2(){
@@ -411,7 +414,7 @@ void moverIzquierdaPiezaJRot2(){
 
         priColPieza -= 1;
     }
-    else fijarPieza = true;
+
 }
 
 void moverIzquierdaPiezaJRot3(){
@@ -433,5 +436,5 @@ void moverIzquierdaPiezaJRot3(){
 
         priColPieza -= 1;
     }
-    else fijarPieza = true;
+
 }

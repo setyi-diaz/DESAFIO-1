@@ -3,7 +3,7 @@
 
 extern bool fijarPieza;
 
-void rota1PiezaJ();
+bool rota1PiezaJ();
 void rota2PiezaJ();
 void rota3PiezaJ();
 void rota4PiezaJ();

@@ -4,9 +4,7 @@
 #include "ModTablero.h"
 #include "ModValidaciones.h"
 
-void rota1PiezaS(const int &x)
-{
-    (void)x;
+void rota1PiezaS(){
 
     unsigned char mascara1 = (0x80 >> (priColPieza % 8));
     unsigned char mascara2 = (0x80 >> (priColPieza % 8));
@@ -26,9 +24,7 @@ void rota1PiezaS(const int &x)
     }
 }
 
-void rota2PiezaS(const int &x)
-{
-    (void)x;
+void rota2PiezaS(){
 
     unsigned char mascara1 = (0x80 >> ((priColPieza + 2) % 8));
     unsigned char mascara2 = (0x80 >> (priColPieza % 8));
@@ -133,12 +129,15 @@ void bajarPiezaSRot1(const int &y)
     }
 }
 
-void moverDerechaPiezaSOrigin()
+void moverDerechaPiezaSOrigin(const int &x)
 {
     unsigned char mascara1 = (0x80 >> ((priColPieza + 3) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
 
-    if (((Tablero[(ultFilaPieza - 1)][((priColPieza + 3) / 8)] & mascara1) == 0x00) &&
+    if ((priColPieza + 3) == x * 8) {
+        return;
+    }
+    else if (((Tablero[(ultFilaPieza - 1)][((priColPieza + 3) / 8)] & mascara1) == 0x00) &&
         ((Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] & mascara2) == 0x00)) {
         // Ingresa 1s
         Tablero[(ultFilaPieza - 1)][((priColPieza + 3) / 8)] |= mascara1;
@@ -154,17 +153,21 @@ void moverDerechaPiezaSOrigin()
         priColPieza += 1;
     }
     else {
-        return;;
+        return;
     }
 }
 
-void moverDerechaPiezaSRot1()
+void moverDerechaPiezaSRot1(const int &x)
 {
     unsigned char mascara1 = (0x80 >> ((priColPieza + 1) % 8));
     unsigned char mascara2 = (0x80 >> ((priColPieza + 2) % 8));
     unsigned char mascara3 = (0x80 >> ((priColPieza + 2) % 8));
 
-    if (((Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
+    if ((priColPieza + 2) == x * 8) {
+        return;
+    }
+
+    else if (((Tablero[(ultFilaPieza - 2)][((priColPieza + 1) / 8)] & mascara1) == 0x00) &&
         ((Tablero[(ultFilaPieza - 1)][((priColPieza + 2) / 8)] & mascara2) == 0x00) &&
         ((Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] & mascara3) == 0x00)) {
         // Ingresa 1s
@@ -185,7 +188,7 @@ void moverDerechaPiezaSRot1()
         priColPieza += 1;
     }
     else {
-        return;;
+        return;
     }
 }
 

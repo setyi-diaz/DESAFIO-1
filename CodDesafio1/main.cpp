@@ -47,7 +47,7 @@ int main()
             mostrarTablero(ancho, alto);
             cout<<ultFilaPieza<<endl;
             cout<<priColPieza<<endl;
-            cout << "Accion: [A]Izq [D]Der [S]Bajar [W]Rotar [Q]Salir: ";
+            cout << "Accion: [A]Izq [D]Der [S]Bajar [W]Rotar [I]Salir: ";
             cin >> accion;
 
             bool bloqueaLateralOrigin = (ultFilaPieza == -1 || ultFilaPieza == 0);
@@ -168,12 +168,12 @@ int main()
                 else if(Piezas[piezaEnJuego] == 'S'){
                     if(rotacionPieza[rotEnJuego] == '0'){
                         if(!bloqueaLateralOrigin){
-                            moverDerechaPiezaSOrigin();
+                            moverDerechaPiezaSOrigin(ancho);
                         }
                     }
                     else if(rotacionPieza[rotEnJuego] == '1'){
                         if(!bloqueaLateralRotada){
-                            moverDerechaPiezaSRot1();
+                            moverDerechaPiezaSRot1(ancho);
                         }
                     }
                 }
@@ -291,11 +291,11 @@ int main()
                     }
                     else if(Piezas[piezaEnJuego] == 'S'){
                         if(rotEnJuego == 0){
-                            rota1PiezaS(ancho * 8);
+                            rota1PiezaS();
                             rotEnJuego = 1;
                         }
                         else if(rotEnJuego == 1){
-                            rota2PiezaS(ancho * 8);
+                            rota2PiezaS();
                             rotEnJuego = 0;
                         }
                     }
@@ -320,7 +320,7 @@ int main()
                 }
                 break;
 
-            case 'Q':
+            case 'I':
                 ultFilaPieza = alto;
                 break;
 
@@ -350,7 +350,7 @@ int main()
                     }
                 }
             }
-            if(accion != 'Q' && ultFilaPieza != -1 && fijarPieza == true){
+            if(accion != 'I' && ultFilaPieza != -1 && fijarPieza == true){
                 cout<<"se cumplio if para valEliminarFila\n";
                 for(short int cont = 0; cont < 4; cont++){
                     int f = valEliminarFila(ancho);
@@ -363,7 +363,7 @@ int main()
 
         }while(fijarPieza == false && (ultFilaPieza + 1) < alto);
         cout<<"salio del while 1\n";
-    }while(accion != 'Q');
+    }while(accion != 'I');
 
     borrarTablero(alto);
     return 0;

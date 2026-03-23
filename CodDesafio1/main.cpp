@@ -45,8 +45,6 @@ int main()
 
         do{
             mostrarTablero(ancho, alto);
-            cout<<ultFilaPieza<<endl;
-            cout<<priColPieza<<endl;
             cout << "Accion: [A]Izq [D]Der [S]Bajar [W]Rotar [I]Salir: ";
             cin >> accion;
             if(accion >= 'a' && accion <= 'z'){
@@ -56,7 +54,6 @@ int main()
             bool bloqueaLateralRotada = (ultFilaPieza == -1 || ultFilaPieza == 0 || ultFilaPieza == 1);
             bool bloqueaRotacion = (ultFilaPieza == -1 || ultFilaPieza == 0 || ultFilaPieza == 1
                                     || (priColPieza + 2) == ancho*8);
-            cout << Piezas[piezaEnJuego]<< endl;
             switch (accion) {
 
             case 'A':

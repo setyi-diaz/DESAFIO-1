@@ -28,7 +28,6 @@ void borrarTablero(const int &y){
     }
     delete[] Tablero;
     Tablero = nullptr;
-    std::cout<<"Memoria liberada"<<std::endl;
 }
 void mostrarTablero(const int &x,const int &y){
     const char DESP = 8*sizeof(unsigned char) - 1;

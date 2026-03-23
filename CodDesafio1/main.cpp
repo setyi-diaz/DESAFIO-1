@@ -366,18 +366,15 @@ int main()
                 }
             }
             if(accion != 'I' && ultFilaPieza != -1 && fijarPieza == true){
-                cout<<"se cumplio if para valEliminarFila\n";
                 for(short int cont = 0; cont < 4; cont++){
                     int f = valEliminarFila(ancho);
                     if(f != -1){
-                        cout<<"se ejecuto eliminar fila\n";
                         desplazarFilas(ancho, f);
                     }
                 }
             }
 
         }while(fijarPieza == false && (ultFilaPieza + 1) < alto);
-        cout<<"salio del while 1\n";
     }while(accion != 'I');
 
     borrarTablero(alto);

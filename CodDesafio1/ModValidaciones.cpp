@@ -83,9 +83,13 @@ char valBajarPiezaZOrigin(){
     else return '0';
 }
 bool valAnchoTablero(const int &x){
-    if((x % 8 != 0)&&(x>48)){
+    if (x<8){
         return true;
     }
+    else if((x % 8 != 0)&&(x>48)){
+        return true;
+    }
+
     else return false;
 }
 int valEliminarFila(const int &x){

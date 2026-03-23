@@ -39,7 +39,7 @@ void desplazarIzqCuadrado(){
     unsigned char mascara = (0x80 >> ((priColPieza - 1) % 8));
 
     if(priColPieza == 0){
-        std::cout<<"No se puede desplazar por fuera del tablero\n";
+        return;
     }
     else if(((Tablero[(ultFilaPieza)][((priColPieza - 1) / 8)] & mascara)== 0x00) &&
              ((Tablero[(ultFilaPieza - 1)][((priColPieza - 1) / 8)] & mascara) == 0x00)){
@@ -53,14 +53,12 @@ void desplazarIzqCuadrado(){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza -= 1;
     }
-    //else fijarPieza = true;
 }
 void desplazarDerCuadrado(const int &x){
     unsigned char mascara = (0x80 >> ((priColPieza + 2) % 8));
 
     if((priColPieza + 2) == x*8){
-        std::cout<<"No se puede desplazar por fuera del tablero\n";
-        //fijarPieza = true;
+        return;
     }
     else if(((Tablero[(ultFilaPieza)][((priColPieza + 2) / 8)] & mascara)== 0x00) &&
              ((Tablero[(ultFilaPieza - 1)][((priColPieza + 2) / 8)] & mascara) == 0x00)){
@@ -74,5 +72,4 @@ void desplazarDerCuadrado(const int &x){
         // Actualizacion de la variable que referencia a la columna de la pieza
         priColPieza += 1;
     }
-    //else fijarPieza = true;
 }
